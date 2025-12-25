@@ -30,5 +30,5 @@ services:
     ports:
         - "9000:80"
     volumes:
-      - ./config/default.json:/usr/share/nginx/html/config/default.json
+      - ./config/default.json:/usr/share/nginx/html/config/default.json:ro
     
