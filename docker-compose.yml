@@ -32,7 +32,7 @@ services:
     entrypoint: >
       sh -c "
       mkdir -p /usr/share/nginx/html/config &&
-      cat > /usr/share/nginx/html/config/default.json <<'EOF'
+      cat <<'EOF' > /usr/share/nginx/html/config/default.json
       {
         \"version\": \"1.10.0\",
         \"minimumCoreVersion\": \"3.4.0\",
@@ -48,4 +48,4 @@ services:
       }
       EOF
       && nginx -g 'daemon off;'
-      "    
+      "
