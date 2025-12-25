@@ -30,22 +30,4 @@ services:
     ports:
         - "9000:80"
     entrypoint: >
-      sh -c "
-      mkdir -p /usr/share/nginx/html/config &&
-      cat <<'EOF' > /usr/share/nginx/html/config/default.json
-      {
-        \"version\": \"1.10.0\",
-        \"minimumCoreVersion\": \"3.4.0\",
-        \"protocol\": \"https\",
-        \"host\": \"raspberrypi\",
-        \"port\": 8080,
-        \"title\": \"Admin Console\",
-        \"footerTitle\": \"OpenHIM Administration Console\",
-        \"footerPoweredBy\": \"<a href='http://openhim.org/' target='_blank'>Powered by OpenHIM</a>\",
-        \"loginBanner\": \"\",
-        \"mediatorLastHeartbeatWarningSeconds\": 60,
-        \"mediatorLastHeartbeatDangerSeconds\": 120
-      }
-      EOF
-      && nginx -g 'daemon off;'
-      "
+      sh -c "mkdir -p /usr/share/nginx/html/config && echo '{\"version\":\"1.10.0\",\"minimumCoreVersion\":\"3.4.0\",\"protocol\":\"https\",\"host\":\"raspberrypi\",\"port\":8080,\"title\":\"Admin Console\",\"footerTitle\":\"OpenHIM Administration Console\",\"footerPoweredBy\":\"<a href=\\'http://openhim.org/\\' target=\\'_blank\\'>Powered by OpenHIM</a>\",\"loginBanner\":\"\",\"mediatorLastHeartbeatWarningSeconds\":60,\"mediatorLastHeartbeatDangerSeconds\":120}' > /usr/share/nginx/html/config/default.json && nginx -g 'daemon off;'"
