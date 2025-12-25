@@ -5,7 +5,7 @@ services:
     container_name: openhim-mongo
     ports:
       - "27017:27017"
-    image: mongo:3.4
+    image: mongo:4.0
     
   core:
     container_name: openhim-core
