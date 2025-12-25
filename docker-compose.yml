@@ -73,4 +73,6 @@ services:
         "keyCloakRealm": "platform-realm",
         "keyCloakClientId": "openhim-oauth"
       }
-      EOF'
+      EOF
+      exec nginx -g "daemon off;"
+      '
