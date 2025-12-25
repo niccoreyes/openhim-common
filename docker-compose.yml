@@ -13,6 +13,7 @@ services:
     environment:
       - mongo_url=mongodb://mongo/openhim
       - mongo_atnaUrl=mongodb://mongo/openhim
+      - openhimConsoleBaseUrl=http://raspberrypi.tail126a09.ts.net:9000
     ports:
       - "8080:8080"
       - "5000:5000"
