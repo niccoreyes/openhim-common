@@ -30,6 +30,8 @@ services:
     image: jembi/openhim-console
     ports:
         - "9000:80"
+    volumes:
+      - /home/pi/openhim-common/config/default.json:/usr/share/nginx/html/config/default.json:ro
     # entrypoint: |
     #   sh -c '
     #   mkdir -p /usr/share/nginx/html/config &&
@@ -50,29 +52,31 @@ services:
     #   EOF
     #   exec nginx -g "daemon off;" // consider removing this if you face issues
     #   '
-    entrypoint: |
-      sh -c '
-      mkdir -p /usr/share/nginx/html/config &&
-      cat > /usr/share/nginx/html/config/default.json <<EOF
-      {
-        "version": "1.18.2",
-        "minimumCoreVersion": "5.2.0",
-        "protocol": "https",
-        "host": "raspberrypi",
-        "hostPath": "",
-        "port": "8080",
-        "title": "Admin Console",
-        "footerTitle": "OpenHIM Administration Console",
-        "footerPoweredBy": "<a href=\"http://openhim.org/\" target=\"_blank\">Powered by OpenHIM</a>",
-        "loginBanner": "",
-        "mediatorLastHeartbeatWarningSeconds": 60,
-        "mediatorLastHeartbeatDangerSeconds": 120,
-        "showLoginForm": true,
-        "ssoEnabled": false,
-        "keyCloakUrl": "http://localhost:9088",
-        "keyCloakRealm": "platform-realm",
-        "keyCloakClientId": "openhim-oauth"
-      }
-      EOF
-      exec nginx -g "daemon off;"
-      '
+
+
+    # entrypoint: |
+    #   sh -c '
+    #   mkdir -p /usr/share/nginx/html/config &&
+    #   cat > /usr/share/nginx/html/config/default.json <<EOF
+    #   {
+    #     "version": "1.18.2",
+    #     "minimumCoreVersion": "5.2.0",
+    #     "protocol": "https",
+    #     "host": "raspberrypi",
+    #     "hostPath": "",
+    #     "port": "8080",
+    #     "title": "Admin Console",
+    #     "footerTitle": "OpenHIM Administration Console",
+    #     "footerPoweredBy": "<a href=\"http://openhim.org/\" target=\"_blank\">Powered by OpenHIM</a>",
+    #     "loginBanner": "",
+    #     "mediatorLastHeartbeatWarningSeconds": 60,
+    #     "mediatorLastHeartbeatDangerSeconds": 120,
+    #     "showLoginForm": true,
+    #     "ssoEnabled": false,
+    #     "keyCloakUrl": "http://localhost:9088",
+    #     "keyCloakRealm": "platform-realm",
+    #     "keyCloakClientId": "openhim-oauth"
+    #   }
+    #   EOF
+    #   exec nginx -g "daemon off;"
+    #   '
