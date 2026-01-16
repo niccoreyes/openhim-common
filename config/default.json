@@ -1,13 +1,14 @@
 {
   "version": "1.10.0",
   "minimumCoreVersion": "3.4.0",
-  "protocol": "https",
+  "protocol": "http",
   "host": "raspberrypi",
-  "port": 8080,
+  "port": 9000,
   "title": "Admin Console",
   "footerTitle": "OpenHIM Administration Console",
   "footerPoweredBy": "<a href='http://openhim.org/' target='_blank'>Powered by OpenHIM</a>",
   "loginBanner": "",
+  "enableLogin": true,
   "mediatorLastHeartbeatWarningSeconds": 60,
   "mediatorLastHeartbeatDangerSeconds": 120
 }
